@@ -342,12 +342,13 @@ def skim_cq_out(filename):
   # Make a dummy molecule to plot the protonic orbitals
   # probably need to pad the protonic molecular orbitals with 0's and ghost
   # basis centers on the rest of the atoms
-  pyscfpmol = gto.Mole(atom=mol.p_geometry())
-  pyscfpmol.basis = mol.pbasis.basis
-  pyscfpmol.build()
-  with open(basename+"_protonic_MOs.molden",'w') as f1:
-    molden.header(pyscfpmol,f1)
-    molden.orbital_coeff(pyscfpmol,f1,mol.pmo_coeff,ene=mol.pmo_energy)
+  if NEO:
+    pyscfpmol = gto.Mole(atom=mol.p_geometry())
+    pyscfpmol.basis = mol.pbasis.basis
+    pyscfpmol.build()
+    with open(basename+"_protonic_MOs.molden",'w') as f1:
+      molden.header(pyscfpmol,f1)
+      molden.orbital_coeff(pyscfpmol,f1,mol.pmo_coeff,ene=mol.pmo_energy)
   
 
 if __name__ == "__main__":
