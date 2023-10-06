@@ -1,0 +1,24 @@
+[Molecule]
+charge = 0
+mult = 1
+geom: 
+ C  0.0000000000   0.0000000000   0.6046129436
+ O -0.0000000000   0.0000000000  -0.5797063115
+ H  0.9241330951  -0.0000000000   1.1856165393
+ H -0.9241330951   0.0000000000   1.1856165393
+
+[QM]
+reference = Real RHF
+job = SCF
+
+[SCF]
+DIISALG=CDIIS
+PRINTMOS=9
+
+[BASIS]
+basis = cc-pvdz
+
+[MISC]
+nsmp = 1
+mem = 2 GB
+
