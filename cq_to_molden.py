@@ -97,6 +97,7 @@ class Molecule:
     self.__mo_coeff = None
     self.__pmo_coeff = None
     self.__atom_count = 0
+    self.__is_NEO = False
 
   def add_atom(self,atom,quantum=False):
     atom.add_index(self.__atom_count)
@@ -109,6 +110,13 @@ class Molecule:
     for i in self.__atoms:
       g += str(i)
     return g
+
+  def set_NEO(self):
+    self.__is_NEO = True
+
+  @property
+  def is_NEO(self):
+    return self.__is_NEO
 
   @property
   def geometry(self):
@@ -325,10 +333,10 @@ def skim_cq_out(filename):
           mol.add_ebasis(process_basis(f1))
         else:
           mol.add_pbasis(process_basis(f1))
-          NEO = True
+          mol.set_NEO()
       elif "Canonical Molecular Orbital Coefficients (Alpha)" in line:
         # First read the proton MOs if NEO Calculation
-        if NEO and mol.pmo_coeff is None:
+        if mol.is_NEO and mol.pmo_coeff is None:
           read_mos(f1,mol,mol.pbasis,True)
         else:
           read_mos(f1,mol,mol.ebasis)
