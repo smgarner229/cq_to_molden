@@ -17,6 +17,8 @@ def factor(l,alpha):
 
 class Atom:
   def __init__(self,sym_,x_,y_,z_,quantum_=False):
+    if "GH" in sym_:
+      sym_=sym_.replace("GH","X")
     self.__sym=sym_
     self.__x=float(x_)
     self.__y=float(y_)
