@@ -31,3 +31,17 @@ Additionally, if a NEO calculation is run, the protonic orbitals are dumped to
 ## Dependencies
 - numpy
 - PySCF
+
+## NOTE:
+There's a bug in CQ when writing the MO coefficients, in that for protonic
+coefficients the first coeff is attributed (incorrectly) to a non-quantum atom,
+althought this is not always the case (and I have yet to figure out why)
+
+Practically, the two lines on 289-290 
+```
+bas_per_atom[1]-=1
+bas_per_atom.pop(0)
+```
+might need commented in / out of the scrip to account for this
+(the lines should be kept in if the bug appears, and commented out if it
+doesn't, as is the case in the quantum h2o example)
