@@ -201,7 +201,7 @@ def skim_cq_out(filename):
         else:
           read_mos(f1,mol,mol.ebasis)
   return mol
-  
+ 
 if __name__ == "__main__":
   from molden import write_electronic_MOs,write_protonic_MOs
   basename = sys.argv[1].split('.')[0]
