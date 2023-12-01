@@ -35,9 +35,11 @@ class Molecule:
     self.__ebasis = None
     self.__pbasis = None
     self.__mo_coeff = None
+    self.__mo2_coeff = None
     self.__pmo_coeff = None
     self.__atom_count = 0
     self.__is_NEO = False
+    self.__basis_name = None
 
   def add_atom(self,atom,quantum=False):
     atom.add_index(self.__atom_count)
@@ -91,6 +93,9 @@ class Molecule:
   def set_mo_coeff(self,MOs):
     self.__mo_coeff = MOs
 
+  def set_mo2_coeff(self,MOs2):
+    self.__mo2_coeff = MOs2
+
   def set_mo_energy(self,e):
     self.__mo_energy = e
 
@@ -140,3 +145,9 @@ class Molecule:
 #        atom.set_symbol(atom.symbol.replace('X','H'))
     return geom
 
+  @property
+  def basis_name(self):
+    return self.__basis_name
+
+  def set_basis_name(self,basis):
+    self.__basis_name = basis

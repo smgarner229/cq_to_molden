@@ -5,7 +5,10 @@ def write_electronic_MOs(mol,basename,extension="_electronic_MOs.molden"):
   filename = basename + extension
   # Make a molecule with the classical positions to plot electronic orbitals
   pyscfmol = gto.Mole(atom=mol.geometry,charge=mol.charge,spin=mol.mult)
-  pyscfmol.basis = mol.ebasis.basis
+  if mol.basis_name is not None:
+    pyscfmol.basis = mol.basis_name
+  else:
+    pyscfmol.basis = mol.ebasis.basis
   pyscfmol.build()
   with open(filename,'w') as f1:
     molden.header(pyscfmol,f1)

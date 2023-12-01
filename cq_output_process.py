@@ -1,7 +1,6 @@
 import sys
 import copy
 import numpy as np
-from pyscf import gto
 from geom import Atom,Molecule
 
 ANGCOUNT = {0:1,
@@ -85,7 +84,6 @@ def process_molecule(iterator):
   print(mol)
   print("")
   return mol
-  return gto.Mole(atom=g,charge=charge,mult=mult)
 
 def fix_normalization(basis):
   new_basis = []
