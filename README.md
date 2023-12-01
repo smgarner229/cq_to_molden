@@ -31,6 +31,32 @@ Additionally, if a NEO calculation is run, the protonic orbitals are dumped to
 ## Dependencies
 - numpy
 - PySCF
+- h5py
+
+### PySCF Installation Instructions
+With Python3 installed and utilizing the `pip` package manager, PySCF can be 
+simply installed with 
+```
+pip install pyscf
+```
+This also will install numpy and scipy as dependencies
+
+### PySCF Virtual Environments
+To isolate an individual PySCF install, you can install it and it's dependencies
+in a python virtual environment with the following commands
+```
+python3 -m venv PYSCF_ENV
+source PYSCF_ENV/bin/activate
+pip install --upgrade pip
+pip install pyscf
+```
+Note that this creates a folder called `PYSCF_ENV` in your current working 
+directory, which is where PySCF, Numpy, and h5py are installed to.
+
+To exit the virtual environment, simply use the command
+```
+deactivate
+```
 
 ## NOTE:
 There's a bug in CQ when writing the MO coefficients, in that for protonic
